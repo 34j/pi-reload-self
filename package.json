@@ -1,0 +1,86 @@
+{
+  "name": "@34j/pi-reload-self",
+  "type": "module",
+  "version": "0.0.0",
+  "description": "Let the agent run /reload by itself.",
+  "author": {
+    "name": "34j"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/34j/pi-reload-self",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/34j/pi-reload-self.git"
+  },
+  "bugs": {
+    "url": "https://github.com/34j/pi-reload-self/issues"
+  },
+  "keywords": [
+    "pi-package",
+    "pi-extension",
+    "coding-agent",
+    "reload"
+  ],
+  "files": [
+    "src"
+  ],
+  "pi": {
+    "extensions": [
+      "./src/index.ts"
+    ]
+  },
+  "scripts": {
+    "build": "tsc --project tsconfig.json --noEmit",
+    "lint": "eslint --fix",
+    "typedoc": "typedoc",
+    "test": "vitest run --coverage --coverage.include=src"
+  },
+  "peerDependencies": {
+    "@earendil-works/pi-coding-agent": ">=1.5.2",
+    "typebox": "*"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "10.0.0",
+    "@earendil-works/pi-coding-agent": "1.5.2",
+    "@tsconfig/strictest": "2.0.9",
+    "@types/node": "26.6.6",
+    "@typescript-eslint/eslint-plugin": "8.73.0",
+    "@vitest/coverage-v8": "5.1.0",
+    "eslint": "10.15.0",
+    "typebox": "1.3.27",
+    "typedoc": "0.28.20",
+    "typescript": "6.0.3",
+    "vitest": "5.1.0"
+  },
+  "typedocOptions": {
+    "entryPoints": [
+      "src"
+    ],
+    "tsconfig": "tsconfig.json",
+    "headings": false
+  },
+  "release": {
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/changelog",
+      "@semantic-release/npm",
+      [
+        "@semantic-release/git",
+        {
+          "assets": [
+            "CHANGELOG.md",
+            "README.md",
+            "package.json",
+            "pnpm-lock.yaml"
+          ]
+        }
+      ],
+      "@semantic-release/github"
+    ]
+  },
+  "publishConfig": {
+    "provenance": "true",
+    "access": "public"
+  }
+}
